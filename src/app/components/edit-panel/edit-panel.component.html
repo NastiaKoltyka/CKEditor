@@ -1,0 +1,10 @@
+<div class="edit-panel">
+  <form class="edit-block">
+    <textarea class="edit-area" name="edit" [(ngModel)]="str"></textarea>
+    <div class="buttons">
+      <input type="button" value="Add" class="btn btn-danger" (click)="create()">
+      <input type="button" value="Save" class="btn btn-success" (click)="save()">
+    </div>
+  </form>
+</div>
+<app-create *ngIf="visibleCreatePanel" (AddTable)="newTable($event)" (AddList)="newList($event)"></app-create>

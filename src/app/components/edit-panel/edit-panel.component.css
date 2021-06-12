@@ -1,0 +1,29 @@
+.edit-panel{
+    width: 1000px;
+    height: 300px;
+    border: 1px solid black;
+    margin: auto;
+    border-radius: 5px;
+    background-color: rgb(255 252 229);
+    margin-top: 10px;
+    padding: 10px;
+}
+.edit-area{
+    padding: 20px;
+    display: block;
+    width: 700px;
+    height: 200px;
+    margin: auto;
+    resize: none;
+    overflow: auto;
+}
+.buttons{
+    display: flex;
+    margin: auto;
+    width: 300px;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+.btn{
+    width: 140px;
+}

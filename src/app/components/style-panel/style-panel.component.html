@@ -1,0 +1,27 @@
+<div class="style-panel">
+  <div class="radio">
+    <p class="title">Text size:</p>
+    <div *ngFor="let size of fontsSize">
+      <input type="radio" name="size" id="{{size}}" value="{{size}}" [ngModel]="selectedSize"
+        (ngModelChange)="sizeChange($event)"class="form-check-input">
+      <label for="{{size}}"class="form-check-label">{{size}}</label>
+    </div>
+  </div>
+  <select [ngModel]="selectedFont" (ngModelChange)="fontChange($event)"class="form-select" aria-label="Default select example">
+    <option *ngFor="let font of fonts">{{font}}</option>
+  </select>
+  <div class="buttons">
+    <button type="button" class="btn btn-danger" (click)="choseColor()">Color</button>
+    <button type="button" class="btn btn-success" (click)="choseBgColor()">BgColor</button>
+  </div>
+  <div class="colors" *ngIf="visibleColor || visibleBgColor">
+    <div class="color-box" *ngFor="let color of colors" [ngStyle]="{'background-color': color}"
+      (click)="getColor(color)"></div>
+  </div>
+  <div>
+    <input type="checkbox" name="" id="bold" [ngModel]="selectedBoldStyle" (ngModelChange)="weightChange($event)"class="form-check-input">
+    <label for="bold"class="form-check-label">Bold text</label>
+    <input type="checkbox" name="" id="italic" [ngModel]="selectedItalicStyle" (ngModelChange)="styleChange($event)"class="form-check-input">
+    <label for="italic"class="form-check-label">Italic text</label>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+.style-panel{
+    width: 1000px;
+    height: 300px;
+    border: 1px solid black;
+    margin: auto;
+    border-radius: 5px;
+    position: relative;
+    background-color: rgb(255 252 229);
+    margin-top: 10px;
+    padding: 10px;
+
+}
+.title{
+    font-weight: bold;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+.radio{
+    margin-bottom: 10px;
+}
+.form-check-label{
+    margin-left: 10px;
+}
+.form-select {
+    width: 200px;
+    margin-bottom: 10px;
+}
+.buttons{
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px
+}
+.btn{
+    width: 95px;
+}
+.form-check-input {
+    margin-left: 10px;
+}
+.colors {
+    width: 150px;
+    height: 150px;
+    outline: 1px solid black;
+    position: absolute;
+    top: 44px;
+    right: 230px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color-box {
+    width: 50px;
+    height: 50px;
+}

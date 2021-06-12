@@ -1,0 +1,59 @@
+<div class="create-panel">
+  <h2>Choose what to add:</h2>
+  <div class="chose">
+    <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input">
+    <label for="table" class="form-check-label">Table</label>
+    <input type="radio" name="item" id="list" value="list" [(ngModel)]="selectedItem" class="form-check-input">
+    <label for="list">List</label>
+  </div>
+  <div class="table" *ngIf="selectedItem=='table'">
+    <form #form="ngForm">
+      <label for="countRow" class="form-label">Input count of row:</label>
+      <input type="number" name="countRow" id="countRow" class="form-control" ngModel>
+      <label for="countCell" class="form-label">Input count of cell:</label>
+      <input type="number" name="countCell" id="countCell" class="form-control" ngModel>
+      <p class="title">Table style:</p>
+      <label for="widthCell" class="form-label">Input width of cell:</label>
+      <input type="number" name="widthCell" id="widthCell" class="form-control" ngModel>
+      <label for="heightCell" class="form-label">Input height of cell:</label>
+      <input type="number" name="heightCell" id="heightCell" class="form-control" ngModel>
+      <label for="borderWidth" class="form-label">Border width:</label>
+      <input type="number" name="borderWidth" id="borderWidth" class="form-control" ngModel>
+      <div>
+        <label for="borderType" class="form-label">Border type:</label>
+        <select name="borderType" class="form-select" aria-label="Default select example" [ngModel]="defaultBorder">
+          <option value="solid" selected>solid</option>
+          <option value="dashed">dashed</option>
+          <option value="inset">inset</option>
+        </select>
+      </div>
+      <div>
+        <label for="countRow" class="form-label">Input count of row:</label>
+        <select name="borderColor" class="form-select" aria-label="Default select example" [ngModel]="defaultColor">
+          <option value="black" [selected]="true">black</option>
+          <option value="red">red</option>
+          <option value="blue">blue</option>
+          <option value="yellow">yellow</option>
+        </select>
+      </div>
+      <input type="button" value="Create Table" (click)="createTable(form.value)" class="btn btn-success">
+
+    </form>
+  </div>
+  <div class="list" *ngIf="selectedItem=='list'">
+    <form #form="ngForm">
+      <label for="countLi" class="form-label">Input count of list items:</label>
+      <input type="number" name="countLi" id="countLi" class="form-control" ngModel>
+      <div class="text-type">
+        <label for="borderType" class="form-label">Type of marks:</label>
+        <select name="type" class="form-select" aria-label="Default select example" [ngModel]="defaultType">
+          <option value="circle">circle</option>
+          <option value="disc">disc</option>
+          <option value="square">square</option>
+        </select>
+      </div>
+      <input type="button" value="Create List" (click)="createList(form.value)" class="btn btn-success">
+    </form>
+  </div>
+
+</div>
