@@ -2,7 +2,7 @@
     <div class="block" [innerHTML]="safeHtml"
         [ngStyle]="{'font-size': style.size,'font-family': style.font, 'color':style.color, 'background-color':style.bgColor, 'font-weight':style.weight ? 'bold' : 'normal', 'font-style':style.italic ? 'italic' : 'normal'}">
     </div>
-    <app-buttons (visibleChanged)="IsVisible($event)"></app-buttons>
+    <app-buttons (visibleChanged)="isVisible($event)"></app-buttons>
     <app-edit-panel *ngIf="info.edit" [inputHTML]="innerHTML" (innerHTMLChange)="newInnerHtml($event)"></app-edit-panel>
     <app-style-panel *ngIf="info.style" (changeStyle)="changeStyle($event)"></app-style-panel>
 </div>

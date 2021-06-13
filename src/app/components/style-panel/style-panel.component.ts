@@ -6,18 +6,18 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./style-panel.component.css']
 })
 export class StylePanelComponent implements OnInit {
-  @Output() changeStyle = new EventEmitter<any>()
-  fonts: string[]
-  selectedFont: string
-  fontsSize: string[]
-  selectedSize: string
-  colors: string[]
-  visibleColor: boolean
-  visibleBgColor: boolean
-  selectedColor: string
-  selectedBgColor: string
-  selectedBoldStyle: boolean
-  selectedItalicStyle: boolean
+  @Output() changeStyle = new EventEmitter<any>();
+  fonts: string[];
+  selectedFont: string;
+  fontsSize: string[];
+  selectedSize: string;
+  colors: string[];
+  visibleColor: boolean;
+  visibleBgColor: boolean;
+  selectedColor: string;
+  selectedBgColor: string;
+  selectedBoldStyle: boolean;
+  selectedItalicStyle: boolean;
   constructor() {
     this.fonts = [
       'Times New Roman',
@@ -31,16 +31,15 @@ export class StylePanelComponent implements OnInit {
       '18pt',
       '20pt'
     ];
-    this.colors = ['red', 'blue', 'green', 'black', 'yellow', 'pink', 'white', 'blueviolet', 'darkcyan']
-
+    this.colors = ['red', 'blue', 'green', 'black', 'yellow', 'pink', 'white', 'blueviolet', 'darkcyan'];
     this.selectedFont = this.fonts[0];
     this.selectedSize = this.fontsSize[0];
-    this.selectedColor = 'black'
-    this.selectedBgColor = 'rgb(255, 252, 229)'
-    this.visibleColor = false
-    this.visibleBgColor = false
-    this.selectedBoldStyle = false
-    this.selectedItalicStyle = false
+    this.selectedColor = 'black';
+    this.selectedBgColor = 'rgb(255, 252, 229)';
+    this.visibleColor = false;
+    this.visibleBgColor = false;
+    this.selectedBoldStyle = false;
+    this.selectedItalicStyle = false;
   }
 
   ngOnInit(): void {
@@ -55,28 +54,28 @@ export class StylePanelComponent implements OnInit {
     this.emitChangeStyle();
   }
   choseColor() {
-    this.visibleColor = true
-    this.visibleBgColor = false
+    this.visibleColor = true;
+    this.visibleBgColor = false;
   }
   choseBgColor() {
-    this.visibleBgColor = true
-    this.visibleColor = false
+    this.visibleBgColor = true;
+    this.visibleColor = false;
   }
   getColor(color: string) {
     if (this.visibleColor) {
-      this.selectedColor = color
+      this.selectedColor = color;
     }
     else {
-      this.selectedBgColor = color
+      this.selectedBgColor = color;
     }
     this.emitChangeStyle();
   }
   weightChange(bold: boolean) {
-    this.selectedBoldStyle = bold
+    this.selectedBoldStyle = bold;
     this.emitChangeStyle();
   }
   styleChange(italic: boolean) {
-    this.selectedItalicStyle = italic
+    this.selectedItalicStyle = italic;
     this.emitChangeStyle();
   }
 

@@ -6,17 +6,17 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  @Output() AddTable = new EventEmitter<string>()
-  @Output() AddList = new EventEmitter<string>()
+  @Output() AddTable = new EventEmitter<string>();
+  @Output() AddList = new EventEmitter<string>();
   selectedItem: string;
   defaultColor: string;
   defaultBorder: string;
-  defaultType: string
+  defaultType: string;
   constructor() {
-    this.selectedItem = 'table'
-    this.defaultColor = 'black'
-    this.defaultBorder = 'solid'
-    this.defaultType = 'circle'
+    this.selectedItem = 'table';
+    this.defaultColor = 'black';
+    this.defaultBorder = 'solid';
+    this.defaultType = 'circle';
   }
 
   ngOnInit(): void {
@@ -31,7 +31,7 @@ export class CreateComponent implements OnInit {
       table += `</tr>`;
     }
     table += '</table>';
-    this.AddTable.emit(table)
+    this.AddTable.emit(table);
   }
   createList(settingsList: any) {
     let list = `<ul style="list-style-type: ${settingsList.type}">`;
@@ -39,7 +39,7 @@ export class CreateComponent implements OnInit {
       list += `<li>item ${i + 1}</li>`;
     }
     list += '</ul>';
-    this.AddList.emit(list)
+    this.AddList.emit(list);
   }
 
 }

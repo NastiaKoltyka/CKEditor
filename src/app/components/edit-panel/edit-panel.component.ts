@@ -7,31 +7,31 @@ import{FormsModule} from '@angular/forms'
   styleUrls: ['./edit-panel.component.css']
 })
 export class EditPanelComponent implements OnInit {
-  @Input() inputHTML:any
-  @Output() innerHTMLChange = new EventEmitter<string>()
-  str:string
-  visibleCreatePanel:boolean
+  @Input() inputHTML:any;
+  @Output() innerHTMLChange = new EventEmitter<string>();
+  str:string;
+  visibleCreatePanel:boolean;
   constructor() { 
-    this.str=''
-    this.visibleCreatePanel=false
+    this.str='';
+    this.visibleCreatePanel=false;
   }
 
   ngOnInit(): void {
-    this.str=this.inputHTML
+    this.str=this.inputHTML;
   }
   save(){
-    this.innerHTMLChange.emit(this.str)
-    this.str=''
+    this.innerHTMLChange.emit(this.str);
+    this.str='';
   }
   create(){
-    this.visibleCreatePanel=true
+    this.visibleCreatePanel=true;
   }
   newTable(table:string){
-    this.visibleCreatePanel=false
+    this.visibleCreatePanel=false;
     this.str += table;
   }
   newList(list:string){
-    this.visibleCreatePanel=false
+    this.visibleCreatePanel=false;
     this.str += list;
   }
 

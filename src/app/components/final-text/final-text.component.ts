@@ -7,14 +7,14 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./final-text.component.css']
 })
 export class FinalTextComponent implements OnInit {
-  innerHTML: string
-  safeHtml:any
-  info:any
-  style:any
-  sanitizer: DomSanitizer
+  innerHTML: string;
+  safeHtml:any;
+  info:any;
+  style:any;
+  sanitizer: DomSanitizer;
   constructor(private domSanitizer: DomSanitizer) {
     this.sanitizer = domSanitizer;
-    this.innerHTML = '<p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p>'
+    this.innerHTML = '<p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p>';
     this.safeHtml = this.innerHTML;
     this.info={
       edit:false,
@@ -33,14 +33,14 @@ export class FinalTextComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  IsVisible(messege:any){
-    this.info=messege
+  isVisible(messege:any){
+    this.info=messege;
   }
   newInnerHtml(messege:string){
     this.innerHTML = messege;
     this.safeHtml=this.sanitizer.bypassSecurityTrustHtml(messege);
   }
   changeStyle(newStyle:any){
-    this.style=newStyle
+    this.style=newStyle;
   }
 }
