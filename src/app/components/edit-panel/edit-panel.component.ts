@@ -10,10 +10,14 @@ export class EditPanelComponent implements OnInit {
   @Input() inputHTML:any;
   @Output() innerHTMLChange = new EventEmitter<string>();
   str:string;
+  buttons:string[]
+  newTag:string
   visibleCreatePanel:boolean;
   constructor() { 
     this.str='';
     this.visibleCreatePanel=false;
+    this.buttons=['p','h1','h2','h3','h4','h5','h6','a']
+    this.newTag=''
   }
 
   ngOnInit(): void {
@@ -21,7 +25,6 @@ export class EditPanelComponent implements OnInit {
   }
   save(){
     this.innerHTMLChange.emit(this.str);
-    this.str='';
   }
   create(){
     this.visibleCreatePanel=true;
@@ -33,6 +36,10 @@ export class EditPanelComponent implements OnInit {
   newList(list:string){
     this.visibleCreatePanel=false;
     this.str += list;
+  }
+  addTag(button:string){
+    this.newTag=`<${button}></${button}>`
+    this.str += this.newTag;
   }
 
 }

@@ -27,3 +27,18 @@
 .btn{
     width: 140px;
 }
+.addButtons{
+    display: flex;
+    width: 30%;
+    margin: auto;
+    justify-content: space-evenly;
+}
+.addButtons div{
+    width: 25px;
+    height: 25px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}

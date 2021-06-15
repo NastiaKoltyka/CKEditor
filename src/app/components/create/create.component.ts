@@ -12,34 +12,49 @@ export class CreateComponent implements OnInit {
   defaultColor: string;
   defaultBorder: string;
   defaultType: string;
+  table:string
+  list:string
   constructor() {
     this.selectedItem = 'table';
     this.defaultColor = 'black';
     this.defaultBorder = 'solid';
     this.defaultType = 'circle';
+    this.table=''
+    this.list=''
   }
 
   ngOnInit(): void {
   }
-  createTable(settings: any) {
-    let table = `<table>`;
+  addTable(settings: any) {
+    this.createTable(settings)
+    this.AddTable.emit(this.table);
+  }
+  addList(settings: any) {
+    this.createList(settings)
+    this.AddTable.emit(this.list);
+  }
+  showPreview(setting:any){
+    this.createTable(setting)
+  }
+  showPreviewList(setting:any){
+    this.createList(setting)
+  }
+  createTable(settings:any){
+    this.table = `<table>`;
     for (let i = 0; i < settings.countRow; i++) {
-      table += `<tr>`;
+      this.table += `<tr>`;
       for (let j = 0; j < settings.countCell; j++) {
-        table += `<td style="width:${settings.widthCell}px; height:${settings.heightCell}px; border:${settings.borderWidth}px ${settings.borderType} ${settings.borderColor}">TD</td>`;
+        this.table += `<td style="width:${settings.widthCell}px; height:${settings.heightCell}px; border:${settings.borderWidth}px ${settings.borderType} ${settings.borderColor}">TD</td>`;
       }
-      table += `</tr>`;
+      this.table += `</tr>`;
     }
-    table += '</table>';
-    this.AddTable.emit(table);
+    this.table += '</table>';
   }
   createList(settingsList: any) {
-    let list = `<ul style="list-style-type: ${settingsList.type}">`;
+    this.list = `<ul style="list-style-type: ${settingsList.type}">`;
     for (let i = 0; i < settingsList.countLi; i++) {
-      list += `<li>item ${i + 1}</li>`;
+      this.list += `<li>item ${i + 1}</li>`;
     }
-    list += '</ul>';
-    this.AddList.emit(list);
+    this.list += '</ul>';
   }
-
 }

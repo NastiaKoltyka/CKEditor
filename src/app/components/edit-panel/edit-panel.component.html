@@ -1,5 +1,8 @@
 <div class="edit-panel">
   <form class="edit-block">
+    <div class="addButtons">
+      <div *ngFor="let button of buttons" (click)="addTag(button)">{{button}}</div>
+    </div>
     <textarea class="edit-area" name="edit" [(ngModel)]="str"></textarea>
     <div class="buttons">
       <input type="button" value="Add" class="btn btn-danger" (click)="create()">

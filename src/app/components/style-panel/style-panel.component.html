@@ -10,13 +10,15 @@
   <select [ngModel]="selectedFont" (ngModelChange)="fontChange($event)"class="form-select" aria-label="Default select example">
     <option *ngFor="let font of fonts">{{font}}</option>
   </select>
-  <div class="buttons">
-    <button type="button" class="btn btn-danger" (click)="choseColor()">Color</button>
-    <button type="button" class="btn btn-success" (click)="choseBgColor()">BgColor</button>
-  </div>
-  <div class="colors" *ngIf="visibleColor || visibleBgColor">
-    <div class="color-box" *ngFor="let color of colors" [ngStyle]="{'background-color': color}"
-      (click)="getColor(color)"></div>
+  <div class="colors">
+      <form #form="ngForm">
+        <input type="color" id="favcolor" name="favcolor" value="#ff0000" [ngModel]="selectedColor"
+        (ngModelChange)="colorChange($event)">
+      </form>
+      <form >
+        <input type="color" id="favcolor" name="favcolor1" value="#ff0000" [ngModel]="selectedBgColor"
+        (ngModelChange)="colorBgChange($event)">
+      </form>
   </div>
   <div>
     <input type="checkbox" name="" id="bold" [ngModel]="selectedBoldStyle" (ngModelChange)="weightChange($event)"class="form-check-input">

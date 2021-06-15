@@ -36,9 +36,10 @@
           <option value="yellow">yellow</option>
         </select>
       </div>
-      <input type="button" value="Create Table" (click)="createTable(form.value)" class="btn btn-success">
-
+      <input type="button" value="Create Table" (click)="addTable(form.value)" class="btn btn-success">
     </form>
+    <button (click)="showPreview(form.value)">Preview</button>
+    <div class="preview" [innerHTML]="table"></div>
   </div>
   <div class="list" *ngIf="selectedItem=='list'">
     <form #form="ngForm">
@@ -52,8 +53,11 @@
           <option value="square">square</option>
         </select>
       </div>
-      <input type="button" value="Create List" (click)="createList(form.value)" class="btn btn-success">
+      <input type="button" value="Create List" (click)="addList(form.value)" class="btn btn-success">
     </form>
+    <button (click)="showPreviewList(form.value)">Preview</button>
+    <div class="preview" [innerHTML]="list"></div>
   </div>
 
 </div>
+

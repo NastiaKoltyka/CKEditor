@@ -32,3 +32,11 @@
 .btn{
     margin-top: 10px;
 }
+.preview{
+  width: 400px;
+  height: 200px;
+  border: 1px solid black;
+  margin: auto;
+  background-color: white;
+  overflow: auto;
+}

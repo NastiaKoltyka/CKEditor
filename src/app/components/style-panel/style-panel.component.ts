@@ -29,7 +29,9 @@ export class StylePanelComponent implements OnInit {
       '14pt',
       '16pt',
       '18pt',
-      '20pt'
+      '20pt',
+      '22pt',
+      '24pt'
     ];
     this.colors = ['red', 'blue', 'green', 'black', 'yellow', 'pink', 'white', 'blueviolet', 'darkcyan'];
     this.selectedFont = this.fonts[0];
@@ -53,21 +55,12 @@ export class StylePanelComponent implements OnInit {
     this.selectedSize = size;
     this.emitChangeStyle();
   }
-  choseColor() {
-    this.visibleColor = true;
-    this.visibleBgColor = false;
+  colorChange(color:any){
+    this.selectedColor = color;
+    this.emitChangeStyle();
   }
-  choseBgColor() {
-    this.visibleBgColor = true;
-    this.visibleColor = false;
-  }
-  getColor(color: string) {
-    if (this.visibleColor) {
-      this.selectedColor = color;
-    }
-    else {
-      this.selectedBgColor = color;
-    }
+  colorBgChange(bgColor:any){
+    this.selectedBgColor = bgColor;
     this.emitChangeStyle();
   }
   weightChange(bold: boolean) {
