@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create',
@@ -14,13 +15,21 @@ export class CreateComponent implements OnInit {
   defaultType: string;
   table:string
   list:string
-  constructor() {
+  sanitizer: DomSanitizer;
+  safeTable:any;
+  safeList:any;
+  constructor(private domSanitizer: DomSanitizer) {
+    this.sanitizer = domSanitizer;
+    
     this.selectedItem = 'table';
     this.defaultColor = 'black';
     this.defaultBorder = 'solid';
     this.defaultType = 'circle';
     this.table=''
     this.list=''
+    this.safeTable= this.table;
+    this.safeList= this.list;
+
   }
 
   ngOnInit(): void {
@@ -28,16 +37,20 @@ export class CreateComponent implements OnInit {
   addTable(settings: any) {
     this.createTable(settings)
     this.AddTable.emit(this.table);
+    
   }
   addList(settings: any) {
     this.createList(settings)
     this.AddTable.emit(this.list);
+    
   }
   showPreview(setting:any){
     this.createTable(setting)
+    this.safeTable=this.sanitizer.bypassSecurityTrustHtml(this.table);
   }
   showPreviewList(setting:any){
     this.createList(setting)
+    this.safeList=this.sanitizer.bypassSecurityTrustHtml(this.list);
   }
   createTable(settings:any){
     this.table = `<table>`;

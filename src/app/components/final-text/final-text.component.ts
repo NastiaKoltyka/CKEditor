@@ -28,7 +28,6 @@ export class FinalTextComponent implements OnInit {
       weight:false,
       italic: false
     }
-    this.sanitizer = domSanitizer;
   }
 
   ngOnInit(): void {

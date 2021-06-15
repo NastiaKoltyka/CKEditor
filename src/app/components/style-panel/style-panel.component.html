@@ -1,29 +1,36 @@
 <div class="style-panel">
   <div class="radio">
-    <p class="title">Text size:</p>
+    <p class="title">Розмір шрифту</p>
     <div *ngFor="let size of fontsSize">
       <input type="radio" name="size" id="{{size}}" value="{{size}}" [ngModel]="selectedSize"
-        (ngModelChange)="sizeChange($event)"class="form-check-input">
-      <label for="{{size}}"class="form-check-label">{{size}}</label>
+        (ngModelChange)="sizeChange($event)" class="form-check-input">
+      <label for="{{size}}" class="form-check-label">{{size}}</label>
     </div>
   </div>
-  <select [ngModel]="selectedFont" (ngModelChange)="fontChange($event)"class="form-select" aria-label="Default select example">
-    <option *ngFor="let font of fonts">{{font}}</option>
-  </select>
+  <div class="fontFamily">
+    <p>Шрифт</p>
+    <select [ngModel]="selectedFont" (ngModelChange)="fontChange($event)" class="form-select"
+      aria-label="Default select example">
+      <option *ngFor="let font of fonts">{{font}}</option>
+    </select>
+  </div>
   <div class="colors">
-      <form #form="ngForm">
-        <input type="color" id="favcolor" name="favcolor" value="#ff0000" [ngModel]="selectedColor"
+    <p>Колір</p>
+    <form #form="ngForm">
+      <input type="color" id="favcolor" name="favcolor" value="#ff0000" [ngModel]="selectedColor"
         (ngModelChange)="colorChange($event)">
-      </form>
-      <form >
-        <input type="color" id="favcolor" name="favcolor1" value="#ff0000" [ngModel]="selectedBgColor"
+    </form>
+    <form>
+      <input type="color" id="favcolor" name="favcolor1" value="#ff0000" [ngModel]="selectedBgColor"
         (ngModelChange)="colorBgChange($event)">
-      </form>
+    </form>
   </div>
   <div>
-    <input type="checkbox" name="" id="bold" [ngModel]="selectedBoldStyle" (ngModelChange)="weightChange($event)"class="form-check-input">
-    <label for="bold"class="form-check-label">Bold text</label>
-    <input type="checkbox" name="" id="italic" [ngModel]="selectedItalicStyle" (ngModelChange)="styleChange($event)"class="form-check-input">
-    <label for="italic"class="form-check-label">Italic text</label>
+    <input type="checkbox" name="" id="bold" [ngModel]="selectedBoldStyle" (ngModelChange)="weightChange($event)"
+      class="form-check-input">
+    <label for="bold" class="form-check-label">Bold text</label>
+    <input type="checkbox" name="" id="italic" [ngModel]="selectedItalicStyle" (ngModelChange)="styleChange($event)"
+      class="form-check-input">
+    <label for="italic" class="form-check-label">Italic text</label>
   </div>
 </div>

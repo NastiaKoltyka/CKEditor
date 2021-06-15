@@ -39,7 +39,7 @@
       <input type="button" value="Create Table" (click)="addTable(form.value)" class="btn btn-success">
     </form>
     <button (click)="showPreview(form.value)">Preview</button>
-    <div class="preview" [innerHTML]="table"></div>
+    <div class="preview" [innerHTML]="safeTable"></div>
   </div>
   <div class="list" *ngIf="selectedItem=='list'">
     <form #form="ngForm">
@@ -56,7 +56,7 @@
       <input type="button" value="Create List" (click)="addList(form.value)" class="btn btn-success">
     </form>
     <button (click)="showPreviewList(form.value)">Preview</button>
-    <div class="preview" [innerHTML]="list"></div>
+    <div class="preview" [innerHTML]="safeList"></div>
   </div>
 
 </div>

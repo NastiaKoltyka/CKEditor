@@ -17,6 +17,10 @@
 }
 .radio{
     margin-bottom: 10px;
+    display: flex;
+}
+.fontFamily{
+    display: flex;
 }
 .form-check-label{
     margin-left: 10px;
