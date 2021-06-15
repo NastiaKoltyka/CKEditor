@@ -14,6 +14,19 @@
 .chose {
   margin-bottom: 10px;
 }
+.chose input{
+  display: none;
+}
+.width-height{
+  display: flex;
+}
+.styleTable{
+  display: flex;
+}
+.chose input:checked + label {
+  font-weight: bold;
+  padding-bottom: 10px;
+}
 
 .form-check-label {
   margin: 0px 10px 0px 5px;

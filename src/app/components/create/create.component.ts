@@ -18,9 +18,9 @@ export class CreateComponent implements OnInit {
   sanitizer: DomSanitizer;
   safeTable:any;
   safeList:any;
+  visible:boolean;
   constructor(private domSanitizer: DomSanitizer) {
     this.sanitizer = domSanitizer;
-    
     this.selectedItem = 'table';
     this.defaultColor = 'black';
     this.defaultBorder = 'solid';
@@ -29,6 +29,7 @@ export class CreateComponent implements OnInit {
     this.list=''
     this.safeTable= this.table;
     this.safeList= this.list;
+    this.visible=false
 
   }
 
@@ -47,10 +48,12 @@ export class CreateComponent implements OnInit {
   showPreview(setting:any){
     this.createTable(setting)
     this.safeTable=this.sanitizer.bypassSecurityTrustHtml(this.table);
+    this.visible=true
   }
   showPreviewList(setting:any){
     this.createList(setting)
     this.safeList=this.sanitizer.bypassSecurityTrustHtml(this.list);
+    this.visible=true
   }
   createTable(settings:any){
     this.table = `<table>`;
@@ -69,5 +72,8 @@ export class CreateComponent implements OnInit {
       this.list += `<li>item ${i + 1}</li>`;
     }
     this.list += '</ul>';
+  }
+  showPreviewBlock(){
+    this.visible=true
   }
 }

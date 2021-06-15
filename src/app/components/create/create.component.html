@@ -1,5 +1,5 @@
 <div class="create-panel">
-  <h2>Choose what to add:</h2>
+  <h2>Що додамо?</h2>
   <div class="chose">
     <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input">
     <label for="table" class="form-check-label">Table</label>
@@ -8,38 +8,44 @@
   </div>
   <div class="table" *ngIf="selectedItem=='table'">
     <form #form="ngForm">
-      <label for="countRow" class="form-label">Input count of row:</label>
-      <input type="number" name="countRow" id="countRow" class="form-control" ngModel>
-      <label for="countCell" class="form-label">Input count of cell:</label>
-      <input type="number" name="countCell" id="countCell" class="form-control" ngModel>
-      <p class="title">Table style:</p>
-      <label for="widthCell" class="form-label">Input width of cell:</label>
-      <input type="number" name="widthCell" id="widthCell" class="form-control" ngModel>
-      <label for="heightCell" class="form-label">Input height of cell:</label>
-      <input type="number" name="heightCell" id="heightCell" class="form-control" ngModel>
-      <label for="borderWidth" class="form-label">Border width:</label>
-      <input type="number" name="borderWidth" id="borderWidth" class="form-control" ngModel>
-      <div>
-        <label for="borderType" class="form-label">Border type:</label>
-        <select name="borderType" class="form-select" aria-label="Default select example" [ngModel]="defaultBorder">
-          <option value="solid" selected>solid</option>
-          <option value="dashed">dashed</option>
-          <option value="inset">inset</option>
-        </select>
+      <div class="width-height">
+        <p>Ширина і висота комірки таблиці</p>
+        <label for="widthCell" class="form-label">Ширина</label>
+        <input type="number" name="widthCell" id="widthCell" class="form-control" ngModel>
+        <label for="heightCell" class="form-label">Висота</label>
+        <input type="number" name="heightCell" id="heightCell" class="form-control" ngModel>
       </div>
-      <div>
-        <label for="countRow" class="form-label">Input count of row:</label>
-        <select name="borderColor" class="form-select" aria-label="Default select example" [ngModel]="defaultColor">
-          <option value="black" [selected]="true">black</option>
-          <option value="red">red</option>
-          <option value="blue">blue</option>
-          <option value="yellow">yellow</option>
-        </select>
+      <p class="title">Table style:</p>
+      <div class="styleTable">
+        <div>
+          <label for="borderWidth" class="form-label">Товщина</label>
+          <input type="number" name="borderWidth" id="borderWidth" class="form-control" ngModel>
+        </div>
+        <div>
+          <label for="borderType" class="form-label">Тип лінії</label>
+          <select name="borderType" class="form-select" aria-label="Default select example" [ngModel]="defaultBorder">
+            <option value="solid" selected>Пряма</option>
+            <option value="dashed">Пунктирна</option>
+            <option value="inset">Вкладена</option>
+          </select>
+        </div>
+        <div>
+          <label for="borderColor" class="form-label">Колір</label>
+          <input type="color" id="borderColor" name="borderColor" value="#ff0000" [ngModel]="defaultColor">
+        </div>
+      </div>
+      <div class="countTable">
+        <label for="countCell" class="form-label">Кількість стовпців</label>
+        <input type="number" name="countCell" id="countCell" class="form-control" ngModel>
+        <label for="countRow" class="form-label">Кількість рядків</label>
+        <input type="number" name="countRow" id="countRow" class="form-control" ngModel>
+        
       </div>
       <input type="button" value="Create Table" (click)="addTable(form.value)" class="btn btn-success">
     </form>
     <button (click)="showPreview(form.value)">Preview</button>
-    <div class="preview" [innerHTML]="safeTable"></div>
+    <div (click)="showPreviewBlock()">Показати приклад</div>
+    <div class="preview" [innerHTML]="safeTable" *ngIf=visible></div>
   </div>
   <div class="list" *ngIf="selectedItem=='list'">
     <form #form="ngForm">
@@ -60,4 +66,3 @@
   </div>
 
 </div>
-
