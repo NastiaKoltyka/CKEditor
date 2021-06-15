@@ -1,6 +1,6 @@
 <div class="wrapper">
     <div class="block" [innerHTML]="safeHtml"
-        [ngStyle]="{'font-size': style.size,'font-family': style.font, 'color':style.color, 'background-color':style.bgColor, 'font-weight':style.weight ? 'bold' : 'normal', 'font-style':style.italic ? 'italic' : 'normal'}">
+        [ngStyle]="{'font-size': style.size,'font-family': style.font, 'color':style.color, 'background-color':style.bgColor, 'font-weight':style.weight ? 'bold' : 'normal', 'font-style':style.italic ? 'italic' : 'normal', 'text-decoration':style.underline ? 'underline' : 'none'}" >
     </div>
     <app-buttons (visibleChanged)="isVisible($event)"></app-buttons>
     <app-edit-panel *ngIf="info.edit" [inputHTML]="innerHTML" (innerHTMLChange)="newInnerHtml($event)"></app-edit-panel>

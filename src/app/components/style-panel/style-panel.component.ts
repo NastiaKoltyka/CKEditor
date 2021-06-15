@@ -18,6 +18,7 @@ export class StylePanelComponent implements OnInit {
   selectedBgColor: string;
   selectedBoldStyle: boolean;
   selectedItalicStyle: boolean;
+  selectedUnderlineStyle:boolean
   constructor() {
     this.fonts = [
       'Times New Roman',
@@ -42,6 +43,7 @@ export class StylePanelComponent implements OnInit {
     this.visibleBgColor = false;
     this.selectedBoldStyle = false;
     this.selectedItalicStyle = false;
+    this.selectedUnderlineStyle=false
   }
 
   ngOnInit(): void {
@@ -71,6 +73,10 @@ export class StylePanelComponent implements OnInit {
     this.selectedItalicStyle = italic;
     this.emitChangeStyle();
   }
+  underlineChange(underline: boolean) {
+    this.selectedUnderlineStyle = underline;
+    this.emitChangeStyle();
+  }
 
   emitChangeStyle(){
     this.changeStyle.emit({
@@ -79,7 +85,8 @@ export class StylePanelComponent implements OnInit {
       color: this.selectedColor,
       bgColor: this.selectedBgColor,
       weight: this.selectedBoldStyle,
-      italic: this.selectedItalicStyle
+      italic: this.selectedItalicStyle,
+      underline:this.selectedUnderlineStyle
     });
   }
 

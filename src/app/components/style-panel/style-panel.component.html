@@ -17,20 +17,25 @@
   <div class="colors">
     <p>Колір</p>
     <form #form="ngForm">
-      <input type="color" id="favcolor" name="favcolor" value="#ff0000" [ngModel]="selectedColor"
+      <label for="background">Фон</label>
+      <input type="color" id="background" name="background" value="#ff0000" [ngModel]="selectedColor"
         (ngModelChange)="colorChange($event)">
     </form>
     <form>
-      <input type="color" id="favcolor" name="favcolor1" value="#ff0000" [ngModel]="selectedBgColor"
+      <label for="background">Текст</label>
+      <input type="color" id="text" name="background" value="#ff0000" [ngModel]="selectedBgColor"
         (ngModelChange)="colorBgChange($event)">
     </form>
   </div>
   <div>
+    <label for="bold" class="form-check-label">Жирний</label>
     <input type="checkbox" name="" id="bold" [ngModel]="selectedBoldStyle" (ngModelChange)="weightChange($event)"
       class="form-check-input">
-    <label for="bold" class="form-check-label">Bold text</label>
+    <label for="italic" class="form-check-label">Курсив</label>
     <input type="checkbox" name="" id="italic" [ngModel]="selectedItalicStyle" (ngModelChange)="styleChange($event)"
       class="form-check-input">
-    <label for="italic" class="form-check-label">Italic text</label>
+    <label for="underline" class="form-check-label">Підкреслений</label>
+    <input type="checkbox" name="" id="underline" [ngModel]="selectedUnderlineStyle" (ngModelChange)="underlineChange($event)" class="form-check-input">
+
   </div>
 </div>
