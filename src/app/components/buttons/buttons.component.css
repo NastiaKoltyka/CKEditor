@@ -1,11 +1,22 @@
 .button-wrapper{
     margin: auto;
-    width: 420px;
+    width: 1000px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    background-color: #2e2e33;
+    height: 55px;
+    border-radius: 5px;
+    align-items: center;
 }
 .btn{
-    width: 200px;
-    height: 40px;
-    font-size: 18px;
+    width: 109px;
+    height: 36px;
+    font-size: 16px;
+    color: white;
+    background-color: #54331a;
+    margin-right: 10px;
+    box-shadow: 0 0 6px rgb(0 0 0 / 60%);
+}
+.btn:hover{
+    background-color: #724523;
 }

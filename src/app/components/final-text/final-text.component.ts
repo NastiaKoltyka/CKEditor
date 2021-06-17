@@ -23,8 +23,8 @@ export class FinalTextComponent implements OnInit {
     this.style={
       font:'Times New Roman',
       size: "12pt",
-      color:"black",
-      bgColor:"rgb(255 252 229)",
+      color:"white",
+      bgColor:"#4c4a4d",
       weight:false,
       italic: false
     }

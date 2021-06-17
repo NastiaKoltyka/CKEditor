@@ -1,54 +1,63 @@
 <div class="create-panel">
-  <h2>Що додамо?</h2>
+  <h3>Що додамо?</h3>
   <div class="chose">
     <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input">
-    <label for="table" class="form-check-label">Table</label>
+    <label for="table" class="form-check-label">Таблиця</label>
     <input type="radio" name="item" id="list" value="list" [(ngModel)]="selectedItem" class="form-check-input">
-    <label for="list">List</label>
+    <label for="list">Список</label>
   </div>
   <div class="table" *ngIf="selectedItem=='table'">
     <form #form="ngForm">
-      <div class="width-height">
-        <p>Ширина і висота комірки таблиці</p>
-        <label for="widthCell" class="form-label">Ширина</label>
-        <input type="number" name="widthCell" id="widthCell" class="form-control" ngModel>
-        <label for="heightCell" class="form-label">Висота</label>
-        <input type="number" name="heightCell" id="heightCell" class="form-control" ngModel>
-      </div>
-      <p class="title">Table style:</p>
-      <div class="styleTable">
-        <div>
-          <label for="borderWidth" class="form-label">Товщина</label>
-          <input type="number" name="borderWidth" id="borderWidth" class="form-control" ngModel>
+      <div class="wrapper-table">
+        <div class="width-height">
+          <p class="heightTitle">Ширина і висота комірки таблиці</p>
+          <label for="widthCell">Ширина</label>
+          <input type="number" name="widthCell" id="widthCell" class="form" ngModel>
+          <label for="heightCell">Висота</label>
+          <input type="number" name="heightCell" id="heightCell" class="form" ngModel>
         </div>
-        <div>
-          <label for="borderType" class="form-label">Тип лінії</label>
-          <select name="borderType" class="form-select" aria-label="Default select example" [ngModel]="defaultBorder">
-            <option value="solid" selected>Пряма</option>
-            <option value="dashed">Пунктирна</option>
-            <option value="inset">Вкладена</option>
-          </select>
+        <div class="styleTable">
+          <p class="styleTitle">Товщина, колір, тип лінії таблиці</p>
+          <div>
+            <label for="borderWidth">Товщина</label>
+            <input type="number" name="borderWidth" id="borderWidth" class="form" ngModel>
+          </div>
+          <div>
+            <label for="borderType">Тип лінії</label>
+            <select name="borderType" class="select"  [ngModel]="defaultBorder">
+              <option value="solid" selected>Пряма</option>
+              <option value="dashed">Пунктирна</option>
+              <option value="inset">Вкладена</option>
+            </select>
+          </div>
+          <div>
+            <label for="borderColor">Колір</label>
+            <input type="color" id="borderColor" name="borderColor" value="#ff0000" [ngModel]="defaultColor">
+          </div>
         </div>
-        <div>
-          <label for="borderColor" class="form-label">Колір</label>
-          <input type="color" id="borderColor" name="borderColor" value="#ff0000" [ngModel]="defaultColor">
+        <div class="countTable">
+          <p class="countTitle">Кількість рядків і стовпців</p>
+          <label for="countCell">Кількість стовпців</label>
+          <input type="number" name="countCell" id="countCell" class="form" ngModel>
+          <label for="countRow">Кількість рядків</label>
+          <input type="number" name="countRow" id="countRow" class="form" ngModel>
         </div>
+        <input type="button" value="Додати" (click)="addTable(form.value)" class="btn">
       </div>
-      <div class="countTable">
-        <label for="countCell" class="form-label">Кількість стовпців</label>
-        <input type="number" name="countCell" id="countCell" class="form-control" ngModel>
-        <label for="countRow" class="form-label">Кількість рядків</label>
-        <input type="number" name="countRow" id="countRow" class="form-control" ngModel>
-        
-      </div>
-      <input type="button" value="Create Table" (click)="addTable(form.value)" class="btn btn-success">
     </form>
     <button (click)="showPreview(form.value)">Preview</button>
     <div (click)="showPreviewBlock()">Показати приклад</div>
     <div class="preview" [innerHTML]="safeTable" *ngIf=visible></div>
   </div>
+
   <div class="list" *ngIf="selectedItem=='list'">
-    <form #form="ngForm">
+    <div class="choseList">
+      <input type="radio" name="item" id="ordered" value="ordered" [(ngModel)]="selectedList">
+      <label for="ordered">Нумерований список</label>
+      <input type="radio" name="item" id="unordered" value="unordered" [(ngModel)]="selectedList">
+      <label for="unordered">Маркований</label>
+    </div>
+    <form #form="ngForm" *ngIf="selectedList=='unordered'">
       <label for="countLi" class="form-label">Input count of list items:</label>
       <input type="number" name="countLi" id="countLi" class="form-control" ngModel>
       <div class="text-type">
@@ -60,9 +69,27 @@
         </select>
       </div>
       <input type="button" value="Create List" (click)="addList(form.value)" class="btn btn-success">
+      <button (click)="showPreviewList(form.value)">Preview</button>
+      <div class="preview" [innerHTML]="safeList"></div>
     </form>
-    <button (click)="showPreviewList(form.value)">Preview</button>
-    <div class="preview" [innerHTML]="safeList"></div>
+    <div *ngIf="selectedList=='ordered'">
+      <form #form="ngForm">
+        <label for="countLi">Input count of list items:</label>
+        <input type="number" name="countLi" id="countLi" class="form-control" ngModel>
+        <div class="text-type">
+          <label for="borderType">Type of marks:</label>
+          <select name="type" [ngModel]="defaultType">
+            <option value="decimal">Цифри</option>
+            <option value="lower-roman">Арабські числа</option>
+            <option value="upper-alpha">Букви</option>
+          </select>
+        </div>
+        <input type="button" value="Create List" (click)="addOrderedList(form.value)" class="btn btn-success">
+        <button (click)="showPreviewOrderList(form.value)">Preview</button>
+        <div class="preview" [innerHTML]="safeOrderList"></div>
+      </form>
+    </div>
+
   </div>
 
 </div>

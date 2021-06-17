@@ -37,6 +37,10 @@ export class EditPanelComponent implements OnInit {
     this.visibleCreatePanel=false;
     this.str += list;
   }
+  newOrdList(ordList:string){
+    this.visibleCreatePanel=false;
+    this.str += ordList;
+  }
   addTag(button:string){
     this.newTag=`<${button}></${button}>`
     this.str += this.newTag;

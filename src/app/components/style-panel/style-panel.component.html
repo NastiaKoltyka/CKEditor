@@ -1,41 +1,44 @@
 <div class="style-panel">
   <div class="radio">
     <p class="title">Розмір шрифту</p>
-    <div *ngFor="let size of fontsSize">
-      <input type="radio" name="size" id="{{size}}" value="{{size}}" [ngModel]="selectedSize"
-        (ngModelChange)="sizeChange($event)" class="form-check-input">
-      <label for="{{size}}" class="form-check-label">{{size}}</label>
+    <div class="size-wrapper">
+      <div *ngFor="let size of fontsSize">
+        <input type="radio" name="size" id="{{size}}" value="{{size}}" [ngModel]="selectedSize"
+          (ngModelChange)="sizeChange($event)">
+        <label for="{{size}}" class="checkLabel">{{size}}</label>
+      </div>
     </div>
   </div>
   <div class="fontFamily">
-    <p>Шрифт</p>
-    <select [ngModel]="selectedFont" (ngModelChange)="fontChange($event)" class="form-select"
+    <p class="titleFont">Шрифт</p>
+    <select [ngModel]="selectedFont" (ngModelChange)="fontChange($event)" class="selectFont"
       aria-label="Default select example">
       <option *ngFor="let font of fonts">{{font}}</option>
     </select>
   </div>
   <div class="colors">
-    <p>Колір</p>
-    <form #form="ngForm">
-      <label for="background">Фон</label>
-      <input type="color" id="background" name="background" value="#ff0000" [ngModel]="selectedColor"
+    <p class="titleColor">Колір</p>
+    <form #form="ngForm" class="color-box">
+      <label for="background" class="color-label">Фон</label>
+      <input type="color" id="background" name="background" value="#4c4a4d" [ngModel]="selectedColor"
         (ngModelChange)="colorChange($event)">
     </form>
     <form>
-      <label for="background">Текст</label>
-      <input type="color" id="text" name="background" value="#ff0000" [ngModel]="selectedBgColor"
+      <label for="background" class="color-label">Текст</label>
+      <input type="color" id="text" name="background" value="#ffffff" [ngModel]="selectedBgColor"
         (ngModelChange)="colorBgChange($event)">
     </form>
   </div>
-  <div>
-    <label for="bold" class="form-check-label">Жирний</label>
-    <input type="checkbox" name="" id="bold" [ngModel]="selectedBoldStyle" (ngModelChange)="weightChange($event)"
-      class="form-check-input">
-    <label for="italic" class="form-check-label">Курсив</label>
-    <input type="checkbox" name="" id="italic" [ngModel]="selectedItalicStyle" (ngModelChange)="styleChange($event)"
-      class="form-check-input">
-    <label for="underline" class="form-check-label">Підкреслений</label>
-    <input type="checkbox" name="" id="underline" [ngModel]="selectedUnderlineStyle" (ngModelChange)="underlineChange($event)" class="form-check-input">
-
+  <div class="text-style">
+    <p class="titleStyle">Стиль тексту</p>
+    <div class="checkboxes">
+      <label for="bold">Жирний</label>
+      <input type="checkbox" name="" id="bold" [ngModel]="selectedBoldStyle" (ngModelChange)="weightChange($event)">
+      <label for="italic">Курсив</label>
+      <input type="checkbox" name="" id="italic" [ngModel]="selectedItalicStyle" (ngModelChange)="styleChange($event)">
+      <label for="underline">Підкреслений</label>
+      <input type="checkbox" name="" id="underline" [ngModel]="selectedUnderlineStyle"
+        (ngModelChange)="underlineChange($event)">
+    </div>
   </div>
 </div>

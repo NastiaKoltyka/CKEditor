@@ -1,16 +1,16 @@
 .wrapper{
     width: 100vw;
-    height: 100vh;
-    background-color: #ffeb3b;
+    min-height: 100vh;
+    background-color: #4c4a4d;
     padding: 20px;
 }
 .block{
     width: 1000px;
     height: 400px;
-    border: 1px solid black;
+    border: 26px solid #2e2e33;
     margin: auto;
     border-radius: 5px;
     padding: 20px;
-    margin-bottom:10px;
+    margin-bottom: 10px;
     overflow: auto;
 }

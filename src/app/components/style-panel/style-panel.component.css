@@ -1,33 +1,58 @@
 .style-panel{
     width: 1000px;
-    height: 300px;
-    border: 1px solid black;
+    height: 400px;
     margin: auto;
     border-radius: 5px;
-    position: relative;
-    background-color: rgb(255 252 229);
+    background-color: #2e2e33;
     margin-top: 10px;
-    padding: 10px;
-
+    padding: 20px;
+    color: white;
 }
-.title{
+.title, .titleFont, .titleColor,.titleStyle{
     font-weight: bold;
-    font-weight: bold;
-    margin-bottom: 0px;
+    position: relative;
+    top: -15px;
+    background-color: #2e2e33;
+    width: 130px;
+    text-align: center;
 }
-.radio{
+.radio , .fontFamily, .colors, .text-style{
     margin-bottom: 10px;
     display: flex;
+    width: 965px;
+    height: 50px;
+    border: 1px dashed white;
+    margin-top: 10px;
+}
+.titleFont{
+    width: 65px;
+}
+.titleColor{
+    width: 55px;
+}
+.titleStyle{
+    width: 108px;
+}
+.size-wrapper{
+    display: flex;
+    width: 580px;
+    margin-left: 110px;
+    align-items: center;
+    justify-content: space-evenly;
 }
 .fontFamily{
-    display: flex;
+    margin-top: 20px;
 }
-.form-check-label{
+.checkLabel{
     margin-left: 10px;
 }
-.form-select {
-    width: 200px;
-    margin-bottom: 10px;
+.selectFont {
+    width: 170px;
+    margin-top: 10px;
+    height: 30px;
+    font-size: 15px;
+    border-radius: 5px;
+    margin-left: 320px;
 }
 .buttons{
     width: 200px;
@@ -43,9 +68,29 @@
 }
 .colors {
 display: flex;
+margin-top: 20px;
+}
+.color-box{
+    margin-left: 320px;
+}
+#background, #text {
+    width: 30px;
+    height: 30px;
+    outline: 1px solid #ffffff;
+    outline-offset: 4px;
+    margin-top: 10px;
+}
+.color-label{
+    margin-right: 12px;
+    margin-left: 12PX;
+}
+.text-style{
+    margin-top: 20px;
+}
+.checkboxes{
+    margin-left: 220px;
+}
+.checkboxes label{
+    margin: 10px;
 }
 
-.color-box {
-    width: 50px;
-    height: 50px;
-}
