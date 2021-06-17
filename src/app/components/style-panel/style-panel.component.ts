@@ -37,8 +37,8 @@ export class StylePanelComponent implements OnInit {
     this.colors = ['red', 'blue', 'green', 'black', 'yellow', 'pink', 'white', 'blueviolet', 'darkcyan'];
     this.selectedFont = this.fonts[0];
     this.selectedSize = this.fontsSize[0];
-    this.selectedColor = 'black';
-    this.selectedBgColor = 'rgb(255, 252, 229)';
+    this.selectedColor = '#ffffff' ;
+    this.selectedBgColor = '#4c4a4d';
     this.visibleColor = false;
     this.visibleBgColor = false;
     this.selectedBoldStyle = false;

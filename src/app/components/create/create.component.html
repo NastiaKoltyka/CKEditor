@@ -2,7 +2,7 @@
   <h3>Що додамо?</h3>
   <div class="chose">
     <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input">
-    <label for="table" class="form-check-label">Таблиця</label>
+    <label for="table">Таблиця</label>
     <input type="radio" name="item" id="list" value="list" [(ngModel)]="selectedItem" class="form-check-input">
     <label for="list">Список</label>
   </div>
@@ -45,16 +45,18 @@
         <input type="button" value="Додати" (click)="addTable(form.value)" class="btn">
       </div>
     </form>
-    <button (click)="showPreview(form.value)">Preview</button>
-    <div (click)="showPreviewBlock()">Показати приклад</div>
+    <button (click)="showPreview(form.value)"class="btn btn-preview">Подивитись на приклад</button>
+    <div (click)="showPreviewBlock()">
+      <div class="picture"></div>
+      <p>Показати приклад</p> </div>
     <div class="preview" [innerHTML]="safeTable" *ngIf=visible></div>
   </div>
 
   <div class="list" *ngIf="selectedItem=='list'">
     <div class="choseList">
-      <input type="radio" name="item" id="ordered" value="ordered" [(ngModel)]="selectedList">
+      <input type="radio" name="item1" id="ordered" value="ordered" [(ngModel)]="selectedList">
       <label for="ordered">Нумерований список</label>
-      <input type="radio" name="item" id="unordered" value="unordered" [(ngModel)]="selectedList">
+      <input type="radio" name="item1" id="unordered" value="unordered" [(ngModel)]="selectedList">
       <label for="unordered">Маркований</label>
     </div>
     <form #form="ngForm" *ngIf="selectedList=='unordered'">
