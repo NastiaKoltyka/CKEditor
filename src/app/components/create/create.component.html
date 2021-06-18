@@ -1,9 +1,9 @@
 <div class="create-panel">
   <h3>Що додамо?</h3>
   <div class="chose">
-    <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input">
+    <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input" (change)="clearPreview()">
     <label for="table">Таблиця</label>
-    <input type="radio" name="item" id="list" value="list" [(ngModel)]="selectedItem" class="form-check-input">
+    <input type="radio" name="item" id="list" value="list" [(ngModel)]="selectedItem" class="form-check-input" (change)="clearPreview()">
     <label for="list">Список</label>
   </div>
   <div class="table" *ngIf="selectedItem=='table'">
@@ -24,7 +24,7 @@
           </div>
           <div>
             <label for="borderType">Тип лінії</label>
-            <select name="borderType" class="select"  [ngModel]="defaultBorder">
+            <select name="borderType" class="select" [ngModel]="defaultBorder">
               <option value="solid" selected>Пряма</option>
               <option value="dashed">Пунктирна</option>
               <option value="inset">Вкладена</option>
@@ -45,50 +45,89 @@
         <input type="button" value="Додати" (click)="addTable(form.value)" class="btn">
       </div>
     </form>
-    <button (click)="showPreview(form.value)"class="btn btn-preview">Подивитись на приклад</button>
-    <div (click)="showPreviewBlock()">
+    <button (click)="showPreview(form.value)" class="btn btn-preview">Подивитись на приклад</button>
+    <div (click)="showPreviewBlock()" class="previewWrapper">
       <div class="picture"></div>
-      <p>Показати приклад</p> </div>
-    <div class="preview" [innerHTML]="safeTable" *ngIf=visible></div>
+      <p>Показати приклад</p>
+    </div>
+    <div class="preview" *ngIf=visible>
+      <div class="brown">
+        <div class="close" (click)="closePreviewBlock()"></div>
+      </div>
+      <div [innerHTML]="safeTable"></div>
+    </div>
   </div>
 
   <div class="list" *ngIf="selectedItem=='list'">
-    <div class="choseList">
-      <input type="radio" name="item1" id="ordered" value="ordered" [(ngModel)]="selectedList">
-      <label for="ordered">Нумерований список</label>
-      <input type="radio" name="item1" id="unordered" value="unordered" [(ngModel)]="selectedList">
-      <label for="unordered">Маркований</label>
+    <div class="choseList-wrapper">
+      <div class="choseList">
+        <p class="typeList">Тип списку</p>
+        <div>
+          <input type="radio" name="itemList" id="ordered" value="ordered" [(ngModel)]="selectedList"  (change)="clearPreview()">
+          <label for="ordered">Нумерований</label>
+          <input type="radio" name="itemList" id="unordered" value="unordered" [(ngModel)]="selectedList"  (change)="clearPreview()">
+          <label for="unordered">Маркований</label>
+        </div>
+      </div>
     </div>
     <form #form="ngForm" *ngIf="selectedList=='unordered'">
-      <label for="countLi" class="form-label">Input count of list items:</label>
-      <input type="number" name="countLi" id="countLi" class="form-control" ngModel>
-      <div class="text-type">
-        <label for="borderType" class="form-label">Type of marks:</label>
-        <select name="type" class="form-select" aria-label="Default select example" [ngModel]="defaultType">
-          <option value="circle">circle</option>
-          <option value="disc">disc</option>
-          <option value="square">square</option>
-        </select>
+      <div class="listUnordered">
+        <div class="list-wrapper">
+          <p class="titleListUnordered">Параметри списку</p>
+          <label for="countLi">Кількість елементів</label>
+          <input type="number" name="countLi" id="countLi" class="form" ngModel>
+          <div class="text-type">
+            <label for="borderType" class="form-label">Тип маркування</label>
+            <select name="type" class="form-select" [ngModel]="defaultType">
+              <option value="circle">circle</option>
+              <option value="disc">disc</option>
+              <option value="square">square</option>
+            </select>
+          </div>
+        </div>
+        <input type="button" value="Додати" (click)="addList(form.value)" class="btn">
       </div>
-      <input type="button" value="Create List" (click)="addList(form.value)" class="btn btn-success">
-      <button (click)="showPreviewList(form.value)">Preview</button>
-      <div class="preview" [innerHTML]="safeList"></div>
+      <button (click)="showPreviewList(form.value)" class="btn btn-preview">Подивитись на приклад</button>
+      <div (click)="showPreviewBlock()" class="previewWrapper">
+        <div class="picture"></div>
+        <p>Показати приклад</p>
+      </div>
+      <div class="preview" *ngIf=visible>
+        <div class="brown">
+          <div class="close" (click)="closePreviewBlock()"></div>
+        </div>
+        <div [innerHTML]="safeList" class="visualPreview"></div>
+      </div>
     </form>
     <div *ngIf="selectedList=='ordered'">
       <form #form="ngForm">
-        <label for="countLi">Input count of list items:</label>
-        <input type="number" name="countLi" id="countLi" class="form-control" ngModel>
-        <div class="text-type">
-          <label for="borderType">Type of marks:</label>
-          <select name="type" [ngModel]="defaultType">
-            <option value="decimal">Цифри</option>
-            <option value="lower-roman">Арабські числа</option>
-            <option value="upper-alpha">Букви</option>
-          </select>
+        <div class="listUnordered">
+          <div class="list-wrapper">
+            <p class="titleListUnordered">Параметри списку</p>
+            <label for="countLi">Кількість елементів</label>
+            <input type="number" name="countLi" id="countLi" class="form" ngModel>
+            <div class="text-type">
+              <label for="borderType" class="form-label">Тип маркування</label>
+              <select name="type" [ngModel]="defaultTypeOrdered" class="form-select">
+                <option value="decimal">Цифри</option>
+                <option value="lower-roman">Арабські числа</option>
+                <option value="upper-alpha">Букви</option>
+              </select>
+            </div>
+          </div>
+          <input type="button" value="Додати" (click)="addOrderedList(form.value)" class="btn">
         </div>
-        <input type="button" value="Create List" (click)="addOrderedList(form.value)" class="btn btn-success">
-        <button (click)="showPreviewOrderList(form.value)">Preview</button>
-        <div class="preview" [innerHTML]="safeOrderList"></div>
+        <button (click)="showPreviewOrderList(form.value)"class="btn btn-preview">Подивитись на приклад</button>
+        <div (click)="showPreviewBlock()" class="previewWrapper">
+          <div class="picture"></div>
+          <p>Показати приклад</p>
+        </div>
+        <div class="preview" *ngIf=visible>
+          <div class="brown">
+            <div class="close" (click)="closePreviewBlock()"></div>
+          </div>
+          <div [innerHTML]="safeOrderList" class="visualPreview"></div>
+        </div>
       </form>
     </div>
 

@@ -1,7 +1,5 @@
 .wrapper{
-    width: 100vw;
     min-height: 100vh;
-    background-color: #4c4a4d;
     padding: 20px;
 }
 .block{
@@ -10,7 +8,9 @@
     border: 26px solid #2e2e33;
     margin: auto;
     border-radius: 5px;
-    padding: 20px;
+    padding-top: 20px;
+    padding-left: 35px;
+    padding-right: 35px;
     margin-bottom: 10px;
     overflow: auto;
 }

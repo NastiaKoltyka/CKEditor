@@ -22,14 +22,16 @@ export class CreateComponent implements OnInit {
   visible:boolean;
   selectedList:string
   orderedlist:string
+  defaultTypeOrdered:string
   safeOrderList:any
   constructor(private domSanitizer: DomSanitizer) {
     this.sanitizer = domSanitizer;
     this.selectedItem = 'table';
-    this.selectedList='unordered';
+    this.selectedList='ordered';
     this.defaultColor = 'black';
     this.defaultBorder = 'solid';
     this.defaultType = 'circle';
+    this.defaultTypeOrdered = 'decimal';
     this.table=''
     this.list=''
     this.orderedlist=''
@@ -42,6 +44,13 @@ export class CreateComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  clearPreview(){
+    this.safeTable= this.table = '';
+    this.safeList= this.list = '';
+    this.safeOrderList=this.orderedlist = '';
+  }
+
   addTable(settings: any) {
     this.createTable(settings)
     this.AddTable.emit(this.table);
@@ -88,7 +97,7 @@ export class CreateComponent implements OnInit {
   }
   addOrderedList(settings: any) {
     this.createOrderedList(settings)
-    this.AddTable.emit(this.list);
+    this.AddTable.emit(this.orderedlist);
     
   }
   createOrderedList(settingsOrderList: any) {
@@ -100,6 +109,9 @@ export class CreateComponent implements OnInit {
   }
   showPreviewBlock(){
     this.visible=true
+  }
+  closePreviewBlock(){
+    this.visible=false
   }
 
 }
