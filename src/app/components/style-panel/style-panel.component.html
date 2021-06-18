@@ -21,11 +21,11 @@
     <form #form="ngForm" class="color-box">
       <label for="background" class="color-label">Фон</label>
       <input type="color" id="background" name="background" [ngModel]="selectedBgColor"
-        (ngModelChange)="colorChange($event)">
+        (ngModelChange)="colorBgChange($event)">
     </form>
     <form>
       <label for="text" class="color-label">Текст</label>
-      <input type="color" id="text" name="background" [ngModel]="selectedColor" (ngModelChange)="colorBgChange($event)">
+      <input type="color" id="text" name="background" [ngModel]="selectedColor" (ngModelChange)="colorChange($event)">
     </form>
   </div>
   <div class="text-style">

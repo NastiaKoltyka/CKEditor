@@ -7,6 +7,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ButtonsComponent implements OnInit {
   @Output() visibleChanged = new EventEmitter<any>();
+  @Output() block = new EventEmitter();
   visibleEdit: boolean;
   visibleStyle: boolean;
   constructor() {
@@ -24,7 +25,7 @@ export class ButtonsComponent implements OnInit {
     else {
       this.visibleEdit = false;
     }
-    this.emitVisibleChanged()
+    this.emitVisibleChanged();
   }
   isVisibleStyle() {
     if (!this.visibleStyle) {
@@ -37,10 +38,14 @@ export class ButtonsComponent implements OnInit {
     this.emitVisibleChanged();
   }
 
+  isVisibleBlock(){
+    this.block.emit();
+  }
+
   emitVisibleChanged() {
     this.visibleChanged.emit({
       edit: this.visibleEdit,
-      style: this.visibleStyle
-    })
+      style: this.visibleStyle,
+    });
   };
 }

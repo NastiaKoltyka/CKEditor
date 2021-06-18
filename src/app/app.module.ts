@@ -8,6 +8,7 @@ import { ButtonsComponent } from './components/buttons/buttons.component';
 import { EditPanelComponent } from './components/edit-panel/edit-panel.component';
 import { StylePanelComponent } from './components/style-panel/style-panel.component';
 import { CreateComponent } from './components/create/create.component';
+import { PasswordComponent } from './components/password/password.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CreateComponent } from './components/create/create.component';
     ButtonsComponent,
     EditPanelComponent,
     StylePanelComponent,
-    CreateComponent
+    CreateComponent,
+    PasswordComponent
   ],
   imports: [
     BrowserModule,

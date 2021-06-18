@@ -18,7 +18,7 @@ export class StylePanelComponent implements OnInit {
   selectedBgColor: string;
   selectedBoldStyle: boolean;
   selectedItalicStyle: boolean;
-  selectedUnderlineStyle:boolean
+  selectedUnderlineStyle:boolean;
   constructor() {
     this.fonts = [
       'Times New Roman',
@@ -43,7 +43,7 @@ export class StylePanelComponent implements OnInit {
     this.visibleBgColor = false;
     this.selectedBoldStyle = false;
     this.selectedItalicStyle = false;
-    this.selectedUnderlineStyle=false
+    this.selectedUnderlineStyle=false;
   }
 
   ngOnInit(): void {

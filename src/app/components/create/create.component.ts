@@ -14,16 +14,16 @@ export class CreateComponent implements OnInit {
   defaultColor: string;
   defaultBorder: string;
   defaultType: string;
-  table:string
-  list:string
+  table:string;
+  list:string;
   sanitizer: DomSanitizer;
   safeTable:any;
   safeList:any;
   visible:boolean;
-  selectedList:string
-  orderedlist:string
-  defaultTypeOrdered:string
-  safeOrderList:any
+  selectedList:string;
+  orderedlist:string;
+  defaultTypeOrdered:string;
+  safeOrderList:any;
   constructor(private domSanitizer: DomSanitizer) {
     this.sanitizer = domSanitizer;
     this.selectedItem = 'table';
@@ -32,13 +32,13 @@ export class CreateComponent implements OnInit {
     this.defaultBorder = 'solid';
     this.defaultType = 'circle';
     this.defaultTypeOrdered = 'decimal';
-    this.table=''
-    this.list=''
-    this.orderedlist=''
+    this.table='';
+    this.list='';
+    this.orderedlist='';
     this.safeTable= this.table;
     this.safeList= this.list;
-    this.visible=false
-    this.safeOrderList=this.orderedlist
+    this.visible=false;
+    this.safeOrderList=this.orderedlist;
 
   }
 
@@ -52,29 +52,29 @@ export class CreateComponent implements OnInit {
   }
 
   addTable(settings: any) {
-    this.createTable(settings)
+    this.createTable(settings);
     this.AddTable.emit(this.table);
     
   }
   addList(settings: any) {
-    this.createList(settings)
+    this.createList(settings);
     this.AddList.emit(this.list);
     
   }
   showPreview(setting:any){
-    this.createTable(setting)
+    this.createTable(setting);
     this.safeTable=this.sanitizer.bypassSecurityTrustHtml(this.table);
-    this.visible=true
+    this.visible=true;
   }
   showPreviewList(setting:any){
-    this.createList(setting)
+    this.createList(setting);
     this.safeList=this.sanitizer.bypassSecurityTrustHtml(this.list);
-    this.visible=true
+    this.visible=true;
   }
   showPreviewOrderList(setting:any){
-    this.createOrderedList(setting)
+    this.createOrderedList(setting);
     this.safeOrderList=this.sanitizer.bypassSecurityTrustHtml(this.orderedlist);
-    this.visible=true
+    this.visible=true;
   }
   
   createTable(settings:any){
@@ -96,7 +96,7 @@ export class CreateComponent implements OnInit {
     this.list += '</ul>';
   }
   addOrderedList(settings: any) {
-    this.createOrderedList(settings)
+    this.createOrderedList(settings);
     this.AddTable.emit(this.orderedlist);
     
   }
@@ -108,10 +108,10 @@ export class CreateComponent implements OnInit {
     this.orderedlist += '</ol>';
   }
   showPreviewBlock(){
-    this.visible=true
+    this.visible=true;
   }
   closePreviewBlock(){
-    this.visible=false
+    this.visible=false;
   }
 
 }

@@ -10,14 +10,14 @@ export class EditPanelComponent implements OnInit {
   @Input() inputHTML:any;
   @Output() innerHTMLChange = new EventEmitter<string>();
   str:string;
-  buttons:string[]
-  newTag:string
+  buttons:string[];
+  newTag:string;
   visibleCreatePanel:boolean;
   constructor() { 
     this.str='';
     this.visibleCreatePanel=false;
-    this.buttons=['p','h1','h2','h3','h4','h5','h6','a']
-    this.newTag=''
+    this.buttons=['p','h1','h2','h3','h4','h5','h6','a'];
+    this.newTag='';
   }
 
   ngOnInit(): void {
@@ -42,8 +42,8 @@ export class EditPanelComponent implements OnInit {
     this.str += ordList;
   }
   addTag(button:string){
-    this.newTag=`<${button}></${button}>`
-    this.str += this.newTag;
+    this.newTag=`<${button}></${button}>`;
+    this.str += this.newTag;;
   }
 
 }

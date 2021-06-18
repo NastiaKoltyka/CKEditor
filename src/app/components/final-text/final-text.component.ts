@@ -10,16 +10,18 @@ export class FinalTextComponent implements OnInit {
   innerHTML: string;
   safeHtml:any;
   info:any;
+  locked: boolean;
   style:any;
   sanitizer: DomSanitizer;
   constructor(private domSanitizer: DomSanitizer) {
     this.sanitizer = domSanitizer;
     this.innerHTML = '<p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet.</p>';
     this.safeHtml = this.innerHTML;
+    this.locked = false;
     this.info={
       edit:false,
-      style:false
-    }
+      style:false,
+    };
     this.style={
       font:'Times New Roman',
       size: "12pt",
@@ -27,7 +29,7 @@ export class FinalTextComponent implements OnInit {
       bgColor:"#4c4a4d",
       weight:false,
       italic: false
-    }
+    };
   }
 
   ngOnInit(): void {
@@ -41,5 +43,11 @@ export class FinalTextComponent implements OnInit {
   }
   changeStyle(newStyle:any){
     this.style=newStyle;
+  }
+  lock(){
+    this.locked = true;
+  }
+  unlock(){
+    this.locked = false;
   }
 }
