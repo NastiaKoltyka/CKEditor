@@ -1,26 +1,39 @@
 <div class="create-panel">
   <h3>Що додамо?</h3>
   <div class="chose">
-    <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input" (change)="clearPreview()">
+    <input type="radio" name="item" id="table" value="table" [(ngModel)]="selectedItem" class="form-check-input"
+      (change)="clearPreview()">
     <label for="table">Таблиця</label>
-    <input type="radio" name="item" id="list" value="list" [(ngModel)]="selectedItem" class="form-check-input" (change)="clearPreview()">
+    <input type="radio" name="item" id="list" value="list" [(ngModel)]="selectedItem" class="form-check-input"
+      (change)="clearPreview()">
     <label for="list">Список</label>
   </div>
   <div class="table" *ngIf="selectedItem=='table'">
-    <form #form="ngForm">
+    <form #form="ngForm" ngNativeValidate>
       <div class="wrapper-table">
         <div class="width-height">
           <p class="heightTitle">Ширина і висота комірки таблиці</p>
-          <label for="widthCell">Ширина</label>
-          <input type="number" name="widthCell" id="widthCell" class="form" ngModel>
-          <label for="heightCell">Висота</label>
-          <input type="number" name="heightCell" id="heightCell" class="form" ngModel>
+          <div class="inputContainer">
+            <label for="widthCell">Ширина</label>
+            <input type="number" name="widthCell" id="widthCell" class="form" #widthModel="ngModel" ngModel required
+              min="1" max="99">
+            <div *ngIf="widthModel.dirty && widthModel.invalid" class="modalWindow">Введіть число від 1 до 99</div>
+          </div>
+          <div class="inputContainer">
+            <label for="heightCell">Висота</label>
+            <input type="number" name="heightCell" id="heightCell" class="form" #heightModel="ngModel" ngModel required
+              min="1" max="99">
+            <div *ngIf="heightModel.dirty && heightModel.invalid" class="modalWindow">Введіть число від 1 до 99</div>
+          </div>
         </div>
         <div class="styleTable">
           <p class="styleTitle">Товщина, колір, тип лінії таблиці</p>
-          <div>
+          <div class="inputContainer">
             <label for="borderWidth">Товщина</label>
-            <input type="number" name="borderWidth" id="borderWidth" class="form" ngModel>
+            <input type="number" name="borderWidth" id="borderWidth" class="form" #borderWidthModel="ngModel" ngModel
+              required min="1" max="99">
+            <div *ngIf="borderWidthModel.dirty && borderWidthModel.invalid" class="modalWindow">Введіть число від 1
+              до 99</div>
           </div>
           <div>
             <label for="borderType">Тип лінії</label>
@@ -37,12 +50,23 @@
         </div>
         <div class="countTable">
           <p class="countTitle">Кількість рядків і стовпців</p>
-          <label for="countCell">Кількість стовпців</label>
-          <input type="number" name="countCell" id="countCell" class="form" ngModel>
-          <label for="countRow">Кількість рядків</label>
-          <input type="number" name="countRow" id="countRow" class="form" ngModel>
+          <div class="inputContainer">
+            <label for="countCell">Кількість стовпців</label>
+            <input type="number" name="countCell" id="countCell" class="form" #countCellModel="ngModel" ngModel required
+              min="1" max="99">
+            <div *ngIf="countCellModel.dirty && countCellModel.invalid" class="modalWindow">Введіть число від 1 до 99
+            </div>
+          </div>
+          <div class="inputContainer">
+            <label for="countRow">Кількість рядків</label>
+            <input type="number" name="countRow" id="countRow" class="form" #countRowModel="ngModel" ngModel required
+              min="1" max="99">
+            <div *ngIf="countRowModel.dirty && countRowModel.invalid" class="modalWindow">Введіть число від 1 до 99
+            </div>
+          </div>
         </div>
-        <input type="button" value="Додати" (click)="addTable(form.value)" class="btn">
+        <input type="button" value="Додати" (click)="addTable(form.value)" class="btn"
+          *ngIf="countRowModel.valid && countCellModel && borderWidthModel &&heightModel.valid">
       </div>
     </form>
     <button (click)="showPreview(form.value)" class="btn btn-preview">Подивитись на приклад</button>
@@ -63,19 +87,26 @@
       <div class="choseList">
         <p class="typeList">Тип списку</p>
         <div>
-          <input type="radio" name="itemList" id="ordered" value="ordered" [(ngModel)]="selectedList"  (change)="clearPreview()">
+          <input type="radio" name="itemList" id="ordered" value="ordered" [(ngModel)]="selectedList"
+            (change)="clearPreview()">
           <label for="ordered">Нумерований</label>
-          <input type="radio" name="itemList" id="unordered" value="unordered" [(ngModel)]="selectedList"  (change)="clearPreview()">
+          <input type="radio" name="itemList" id="unordered" value="unordered" [(ngModel)]="selectedList"
+            (change)="clearPreview()">
           <label for="unordered">Маркований</label>
         </div>
       </div>
     </div>
-    <form #form="ngForm" *ngIf="selectedList=='unordered'">
+    <form #form="ngForm" ngNativeValidate *ngIf="selectedList=='unordered'">
       <div class="listUnordered">
         <div class="list-wrapper">
           <p class="titleListUnordered">Параметри списку</p>
-          <label for="countLi">Кількість елементів</label>
-          <input type="number" name="countLi" id="countLi" class="form" ngModel>
+          <div class="inputContainer">
+            <label for="countLi">Кількість елементів</label>
+            <input type="number" name="countLi" id="countLi" class="form" #countUListModel="ngModel" ngModel required
+              min="1" max="99">
+            <div *ngIf="countUListModel.dirty && countUListModel.invalid" class="modalWindow">Введіть число від 1 до 99
+            </div>
+          </div>
           <div class="text-type">
             <label for="borderType" class="form-label">Тип маркування</label>
             <select name="type" class="form-select" [ngModel]="defaultType">
@@ -85,7 +116,7 @@
             </select>
           </div>
         </div>
-        <input type="button" value="Додати" (click)="addList(form.value)" class="btn">
+        <input type="button" value="Додати" (click)="addList(form.value)" class="btn" *ngIf="countUListModel.valid">
       </div>
       <button (click)="showPreviewList(form.value)" class="btn btn-preview">Подивитись на приклад</button>
       <div (click)="showPreviewBlock()" class="previewWrapper">
@@ -104,8 +135,14 @@
         <div class="listUnordered">
           <div class="list-wrapper">
             <p class="titleListUnordered">Параметри списку</p>
-            <label for="countLi">Кількість елементів</label>
-            <input type="number" name="countLi" id="countLi" class="form" ngModel>
+            <div class="inputContainer">
+              <label for="countLi">Кількість елементів</label>
+              <input type="number" name="countLi" id="countLi" class="form" #countOListModel="ngModel" ngModel required
+                min="1" max="99">
+              <div *ngIf="countOListModel.dirty && countOListModel.invalid" class="modalWindow">Введіть число від 1 до
+                99
+              </div>
+            </div>
             <div class="text-type">
               <label for="borderType" class="form-label">Тип маркування</label>
               <select name="type" [ngModel]="defaultTypeOrdered" class="form-select">
@@ -115,9 +152,9 @@
               </select>
             </div>
           </div>
-          <input type="button" value="Додати" (click)="addOrderedList(form.value)" class="btn">
+          <input type="button" value="Додати" (click)="addOrderedList(form.value)" class="btn" *ngIf="countOListModel.valid">
         </div>
-        <button (click)="showPreviewOrderList(form.value)"class="btn btn-preview">Подивитись на приклад</button>
+        <button (click)="showPreviewOrderList(form.value)" class="btn btn-preview">Подивитись на приклад</button>
         <div (click)="showPreviewBlock()" class="previewWrapper">
           <div class="picture"></div>
           <p>Показати приклад</p>
